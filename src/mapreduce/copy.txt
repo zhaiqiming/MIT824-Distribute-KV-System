@@ -1,0 +1,43 @@
+kv := make([]KeyValue ,0)
+
+	for i := 0 ; i < nMap ; i++ {
+		filename = reduceName(jobName,i,reduceTask)
+		f,_ = os.OpenFile(filename,os.RDONLY,0666)
+		defer f.Close()
+		enc := json.NewDecoder(f)
+		var element KeyValue
+		for{
+			err = enc.Decode(&element)
+			if err != uil{
+				break;
+			}else{
+				kv = append(kv,element)
+			}
+		}
+
+	}
+	sort.Sort(cmp(kv))
+
+	result := make([]KeyValue , 0)
+	index := 0
+	length = len(kv)
+
+	if length > 0{
+			last := kv[0]
+			for _,it := range kv{
+				if last.Key == it.Key && last.Value == it.Value{
+					result[index].Value += it.Value
+				}else{
+					index += 1
+					result[index].Value=it.Value
+					result[index].Key=it.Key
+					last = it
+				}
+			}
+	}
+	of, _ = os.OpenFile(outFile,os.RDONLY|os.WRONLY|os.CREATE,0666)
+	defer of.Close()
+	enc := json.NewEncoder(of)
+	for it:=range result{
+		enc.Encode(&it)
+	}
