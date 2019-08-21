@@ -16,8 +16,13 @@
 		RPC数量限制；
 		2.3机器故障从persist重启；提交关于之前的日志的commit；
 		RPC出现随机不可靠始建；save persister
+
+## 完成lab3的两个part：
+		3.1实现了一个一致的分布式KV-DB实现client和sever端put append get三种方法，使用raft协议
+		3.2结合lab2实现了快照功能
 ![图 1 ](./images/raft-图1.jpg) 
 ![图 2 ](./images/raft-图2.jpg) 
 ![图 3 ](./images/raft-图3.jpg) 
+![图 4 ](./images/KV-图1.jpg) 
 
  
